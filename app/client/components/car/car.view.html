@@ -1,0 +1,29 @@
+<form ng-submit="addCar()">
+    <h4>Add Car</h4>
+    <div class="row">
+        <div class="input-field col s6">
+            <input placeholder="Car Description" id="car_description" ng-model="carDescription" type="text" class="validate">
+        </div>
+    </div>
+</form>
+
+<div ng-show="!cars">
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+</div>
+<div ng-show="cars && isEmpty(cars)">
+    <h5>No Cars</h5>
+</div>
+<ul id="carData" ng-show="cars && !isEmpty(cars)" class="collection">
+    <li ng-repeat="(id, car) in cars" class="collection-item avatar">
+        <span class="title"><h5>{{car.description}}</h5></span>
+        <p>
+            {{car.id}}<br>
+            {{car.bought | date : "mediumDate"}}<br>
+            <input type="checkbox" id="{{car.id}}-isSold" ng-model="car.isSold" ng-change="updateCar(car)" class="filled-in" />
+            <label for="{{car.id}}-isSold">Sold</label>
+        </p>
+        <a ng-click="removeCar(car)" class="secondary-content waves-effect waves-light btn"><i class="material-icons">delete</i></a>
+    </li>
+</ul>
