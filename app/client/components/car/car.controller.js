@@ -34,5 +34,5 @@ clientApp.controller('CarCtrl', ['$scope', 'CarResource', function($scope, CarRe
 
     $scope.updateCar = function(car) {
         car.$update();
-    }
+    };
 }]);

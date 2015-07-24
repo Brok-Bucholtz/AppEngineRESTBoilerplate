@@ -7,7 +7,8 @@ api_version: 1
 handlers:
 # Server
 - url: /_ah/spi/.*
-  script: main.APPLICATION
+  script: api.main.APPLICATION
+  secure: always
 
 # Client
 - url: /favicon\.ico
@@ -24,12 +25,15 @@ handlers:
 - url: /img
   static_dir: client/assets/img
 
+- url: /js
+  static_dir: client/assets/js
+
 - url: /.*
   static_files: client/index.html
   upload: client/index.html
 
 libraries:
 - name: endpoints
-  version: 1.0
+  version: latest
 - name: pycrypto
   version: latest
