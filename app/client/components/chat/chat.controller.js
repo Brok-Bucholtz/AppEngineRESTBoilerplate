@@ -1,3 +1,7 @@
-clientApp.controller('ChatCtrl', ['$scope', function($scope) {
+'use strict';
 
-}]);
+angular.module('chat.controllers', [
+])
+    .controller('ChatCtrl', function() {
+
+    });

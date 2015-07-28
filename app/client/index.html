@@ -12,7 +12,7 @@
         <base href="/">
     </head>
     <body>
-        <div class="container" ng-app="ClientApp">
+        <div class="container" ng-app="client.app">
             <div ng-controller="NavigationCtrl" ng-include="viewUrl"></div>
             <div ui-view class="active-page"></div>
         </div>
@@ -23,16 +23,27 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
-        <script src="/client/clientapp.module.js"></script>
+        <script src="/client/shared/oauth/oauth.service.js"></script>
         <script src="/client/shared/user/user.resource.js"></script>
-        <script src="/client/shared/user/user.factory.js"></script>
-        <script src="/client/clientapp.routes.js"></script>
+        <script src="/client/shared/user/user.service.js"></script>
+        <script src="/client/shared/car/car.resource.js"></script>
+        <script src="/client/shared/car/car.service.js"></script>
+
+        <script src="/client/components/car/car.controller.js"></script>
+        <script src="/client/components/car/car.component.js"></script>
+
+        <script src="/client/components/home/home.controller.js"></script>
+        <script src="/client/components/home/home.component.js"></script>
+
+        <script src="/client/components/chat/chat.controller.js"></script>
+        <script src="/client/components/chat/chat.component.js"></script>
+
+        <script src="/client/components/login/login.controller.js"></script>
+        <script src="/client/components/login/login.component.js"></script>
 
         <script src="/client/components/navigation/navigation.controller.js"></script>
-        <script src="/client/components/home/home.controller.js"></script>
-        <script src="/client/components/car/car.resource.js"></script>
-        <script src="/client/components/car/car.controller.js"></script>
-        <script src="/client/components/chat/chat.controller.js"></script>
-        <script src="/client/components/login/login.controller.js"></script>
+        <script src="/client/components/navigation/navigation.component.js"></script>
+
+        <script src="/client/client.app.js"></script>
     </body>
 </html>

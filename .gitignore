@@ -19,6 +19,7 @@ lib64/
 parts/
 sdist/
 var/
+docs/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -58,3 +59,12 @@ target/
 
 #PyCharm
 .idea/
+
+#Node
+node_modules/
+
+#Grunt
+.grunt-gae-pid
+
+#Install
+app/client/assets/js

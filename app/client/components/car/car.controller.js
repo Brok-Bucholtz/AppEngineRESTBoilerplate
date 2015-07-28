@@ -1,38 +1,34 @@
-clientApp.controller('CarCtrl', ['$scope', 'CarResource', function($scope, CarResource) {
-    CarResource.query(function(response) {
-        $scope.cars = {};
-        angular.forEach(response.items, function(item) {
-            var car = new CarResource();
-            car.description = item.description;
-            car.isSold = item.isSold;
-            car.bought = item.bought;
-            car.id = item.id;
-            $scope.cars[car.id] = car;
-        });
-        $scope.isCarDataLoaded = true;
-    });
+'use strict';
 
-    //Object not within scope, created this helper function
-    $scope.isEmpty = function(obj) {
-        return Object.keys(obj).length == 0;
-    };
+angular.module('car.controllers', [
+    'car.services'
+])
+    .controller('CarCtrl', ['$scope', 'CarService', function($scope, carService) {
+        carService.getAllCars()
+            .then(function(cars){
+                $scope.cars = cars;
+            }).finally(function(){
+                $scope.isCarDataLoaded = true;
+            });
 
-    $scope.addCar = function() {
-        var car = new CarResource();
-        car.description = $scope.carDescription;
-        car.$save(function() {
-            $scope.cars[car.id] = car;  //Add car with the id returned from server
-        });
+        //Reference to Object not within scope, created this helper function
+        $scope.util = {};
+        $scope.util.isEmpty = function(obj) {
+            return Object.keys(obj).length === 0;
+        };
 
-        $scope.carDescription = '';
-    };
+        $scope.createCar = function() {
+            carService.createCar({description: $scope.carDescription})
+                .then(function(car){
+                    $scope.cars[car.id] = car;  //Add car with the id returned from server
+                });
+            $scope.carDescription = '';
+        };
 
-    $scope.removeCar = function(car) {
-        delete $scope.cars[car.id];
-        car.$remove();
-    };
+        $scope.deleteCar = function(car) {
+            delete $scope.cars[car.id];
+            carService.deleteCar(car);
+        };
 
-    $scope.updateCar = function(car) {
-        car.$update();
-    };
-}]);
+        $scope.updateCar = carService.updateCar;
+    }]);

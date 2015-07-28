@@ -1,3 +1,7 @@
-clientApp.controller('HomeCtrl', ['$scope', function($scope) {
+'use strict';
 
-}]);
+angular.module('home.controllers', [
+])
+    .controller('HomeCtrl', function() {
+
+    });

@@ -1,13 +1,19 @@
-clientApp.controller('NavigationCtrl', ['$scope', '$location', '$state', 'User', function($scope, $location, $state, User) {
-    $scope.viewUrl = '/client/components/navigation/navigation.view.html';
-    $scope.User = User;
+'use strict';
 
-    $scope.isCurrentPage = function (viewLocation) {
-        return viewLocation === $location.path();
-    };
+angular.module('navigation.controllers', [
+    'ui.router',
+    'user.services'
+])
+    .controller('NavigationCtrl', ['$scope', '$state', 'UserService', function($scope, $state, userService) {
+        $scope.viewUrl = '/client/components/navigation/navigation.view.html';
+        $scope.User = userService;
 
-    $scope.logout = function() {
-        User.logout();
-        $state.go($state.current, {}, {reload: true});
-    };
-}]);
+        $scope.isCurrentState = function (stateName) {
+            return stateName === $state.current.name;
+        };
+
+        $scope.logout = function() {
+            userService.logout();
+            $state.go($state.current, {}, {reload: true});
+        };
+    }]);

@@ -1,0 +1,22 @@
+{
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "esnext": true,
+  "freeze": true,
+  "latedef": "nofunc",
+  "noarg": true,
+  "strict": true,
+  "undef": true,
+  "unused": true,
+  "strict": true,
+  "globalstrict": true,
+  "jasmine": true,
+  "node": true,
+  "globals": {
+    // Angular
+    "angular": false,
+    "module": true,
+    "inject": true
+  }
+}
