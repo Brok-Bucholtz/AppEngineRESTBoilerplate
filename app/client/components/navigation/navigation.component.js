@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('navigation.component', [
-    'ui.router',
-    'navigation.controllers'
+  'ui.router',
+  'navigation.controllers'
 ]);

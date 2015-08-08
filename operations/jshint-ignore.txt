@@ -1,1 +1,6 @@
 ../app/client/assets/
+../submodules/
+../node_modules/
+../target/
+../docs/
+../.idea/

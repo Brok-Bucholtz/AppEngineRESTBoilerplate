@@ -1,0 +1,12 @@
+{
+  "excludeFiles": [
+    "../app/client/assets/**",
+    "../submodules/**",
+    "../node_modules/**",
+    "../target/**",
+    "../docs/**",
+    "../.idea/**"
+  ],
+  "preset": "google",
+  "disallowTrailingWhitespace": "ignoreEmptyLines"
+}
