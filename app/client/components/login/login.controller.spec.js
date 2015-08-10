@@ -4,42 +4,49 @@ describe('login controller', function() {
   beforeEach(module('login.controllers'));
 
   var $scope = null;
-  var $state = null;
   var loginCtrl = null;
+  var mockState = null;
   var mockUserServ = null;
   var testUser = {};
 
   beforeEach(inject(function($controller, $rootScope, $q) {
     $scope = $rootScope.$new();
 
+    mockState = jasmine.createSpyObj('$state', ['go']);
+    mockState.params = {};
     mockUserServ = jasmine.createSpyObj('UserService', ['login', 'isLoggedIn']);
+    mockUserServ.isLoggedIn.and.returnValue(false);
     mockUserServ.login.and.returnValue($q.when(testUser));
 
     loginCtrl = $controller('LoginCtrl', {
       $scope: $scope,
-      $state: $state,
+      $state: mockState,
       UserService: mockUserServ
     });
     $scope.$digest();
   }));
 
-  it('should redirect to / after login by default', function() {
-    expect(true).toBeFalsy();//ToDO: Implement
+  it('should redirect to "/" after login by default', function() {
+    var testProvider =  'Test Provider';
+    $scope.authenticate(testProvider);
+    $scope.$digest();
+
+    expect(mockUserServ.login).toHaveBeenCalledWith(testProvider);
+    expect($scope.isLoginError).toBeFalsy();
+    expect($scope.isAuthenticating).toBeFalsy();
+    expect(mockState.go).toHaveBeenCalledWith('/');
   });
 
   it('should redirect to a path after login, if provided', function() {
-    expect(true).toBeFalsy();//ToDO: Implement
-  });
+    var testProvider =  'Test Provider';
+    var testState = 'Test State';
+    mockState.params.redirectState = testState;
+    $scope.authenticate(testProvider);
+    $scope.$digest();
 
-  it('should redirect them if they are already logged in', function() {
-    expect(true).toBeFalsy();//ToDO: Implement
-  });
-
-  it('should authenticate them if login succeeds', function() {
-    expect(true).toBeFalsy();//ToDO: Implement
-  });
-
-  it('should not authenticate them if login fails', function() {
-    expect(true).toBeFalsy();//ToDO: Implement
+    expect(mockUserServ.login).toHaveBeenCalledWith(testProvider);
+    expect($scope.isLoginError).toBeFalsy();
+    expect($scope.isAuthenticating).toBeFalsy();
+    expect(mockState.go).toHaveBeenCalledWith(testState);
   });
 });
