@@ -40,8 +40,10 @@
     "karma-ie-launcher": "latest",
     "karma-phantomjs-launcher": "latest",
 
-    "coveralls": "latest",
     "ncp": "latest",
+    "mkdirp": "latest",
+
+    "coveralls": "latest",
     "jshint": "latest",
     "jsdoc": "latest",
     "jscs": "latest"
