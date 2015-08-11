@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-gae');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   var metaData = {
     testServer: {
@@ -21,13 +22,7 @@ module.exports = function(grunt) {
         './app/client/**/*.component.js',
         './app/client/client.app.js'
       ],
-      libFiles: [
-        './app/client/assets/js/oauth-js/0.4.0/oauth.min.js',
-        './app/client/assets/js/other/angular.min.js',
-        './app/client/assets/js/other/angular-resource.min.js',
-        './app/client/assets/js/other/angular-ui-router.min.js',
-        './app/client/assets/js/other/angular-mocks.js'
-      ]
+      libFiles: ['./app/client/assets/js/vendor_concat.js']
     },
   };
 
@@ -61,11 +56,7 @@ module.exports = function(grunt) {
           'test/client/karma-unit.conf.js',
         singleRun: true
       },
-      midway: {
-        configFile: metaData.operations.location +
-          'test/client/karma-midway.conf.js',
-        singleRun: true
-      },
+      // ToDO: Add E2E testing
       e2e: {
         configFile: metaData.operations.location +
           'test/client/karma-e2e.conf.js',
@@ -85,11 +76,25 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    concat: {
+      vendorJS: {
+        src: [
+          'bower_components/oauth-js/dist/oauth.min.js',
+          'bower_components/angular/angular.min.js',
+          'bower_components/angular-resource/angular-resource.min.js',
+          'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+          'bower_components/angular-mocks/angular-mocks.js'
+        ],
+        dest: 'app/client/assets/js/vendor_concat.js',
+      }
     }
   });
 
   grunt.registerTask('dev', ['gae:runDevServer']);
   grunt.registerTask('test', ['karma:unit']);
   grunt.registerTask('coverage', ['jasmine:coverage']);
+  grunt.registerTask('setupclient', ['concat:vendorJS']);
+
   grunt.registerTask('default', ['dev']);
 };

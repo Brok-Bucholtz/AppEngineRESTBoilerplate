@@ -5,7 +5,8 @@
     "../node_modules/**",
     "../target/**",
     "../docs/**",
-    "../.idea/**"
+    "../.idea/**",
+    "../bower_components/**"
   ],
   "preset": "google",
   "disallowTrailingWhitespace": "ignoreEmptyLines"

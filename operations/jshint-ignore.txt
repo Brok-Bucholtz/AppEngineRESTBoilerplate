@@ -4,3 +4,4 @@
 ../target/
 ../docs/
 ../.idea/
+../bower_components/

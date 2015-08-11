@@ -1,0 +1,12 @@
+{
+  "name": "AppEngineRESTBoilerplate",
+  "version": "1.0.0",
+  "private" : true,
+  "dependencies": {
+    "oauth-js": "latest",
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-ui-router": "latest",
+    "angular-mocks": "latest"
+  }
+}

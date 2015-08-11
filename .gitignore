@@ -10,6 +10,7 @@ build/
 dist/
 docs/
 target/
+bower_components/
 
 #IDE
 .idea/

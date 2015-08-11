@@ -7,7 +7,7 @@
     "url": "https://github.com/Brok-Bucholtz/AppEngineRESTBoilerplate.git"
   },
   "scripts": {
-    "postinstall": "node ./operations/setup_server.js",
+    "postinstall": "bower install && grunt setupclient && node ./operations/setup_server.js",
     "start": "grunt dev",
     "test": "grunt test",
     "coverage": "grunt coverage",
@@ -20,12 +20,15 @@
   "author": "Brok Bucholtz",
   "dependencies": {},
   "devDependencies": {
+    "bower": "latest",
+
     "grunt": "latest",
     "grunt-cli": "latest",
     "grunt-gae": "latest",
     "grunt-karma": "latest",
     "grunt-contrib-jasmine": "latest",
     "grunt-template-jasmine-istanbul": "latest",
+    "grunt-contrib-concat": "latest",
 
     "jasmine": "latest",
     "jasmine-core": "latest",

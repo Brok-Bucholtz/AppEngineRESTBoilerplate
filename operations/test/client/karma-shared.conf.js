@@ -6,14 +6,10 @@ module.exports = function() {
     frameworks: ['jasmine'],
     plugins: ['karma-jasmine', 'karma-phantomjs-launcher'],
     browsers: ['PhantomJS'],
-    //browsers: ['Chrome','Firefox', 'Internet Explorer', 'Safari'],
+    // ToDo: browsers: ['Chrome','Firefox', 'Internet Explorer', 'Safari'],
 
     files: [
-      'app/client/assets/js/oauth-js/0.4.0/oauth.min.js',
-      'app/client/assets/js/other/angular.min.js',
-      'app/client/assets/js/other/angular-resource.min.js',
-      'app/client/assets/js/other/angular-ui-router.min.js',
-      'app/client/assets/js/other/angular-mocks.js',
+      'app/client/assets/js/vendor_concat.js',
       'app/client/**/*.resource.js',
       'app/client/**/*.service.js',
       'app/client/**/*.controller.js',
