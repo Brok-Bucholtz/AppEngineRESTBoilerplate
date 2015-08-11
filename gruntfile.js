@@ -13,8 +13,22 @@ module.exports = function(grunt) {
       location: './operations/'
     },
     client: {
-      location: './app/client/'
-    }
+      location: './app/client/',
+      srcFiles: [
+        './app/client/**/*.resource.js',
+        './app/client/**/*.service.js',
+        './app/client/**/*.controller.js',
+        './app/client/**/*.component.js',
+        './app/client/client.app.js'
+      ],
+      libFiles: [
+        './app/client/assets/js/oauth-js/0.4.0/oauth.min.js',
+        './app/client/assets/js/other/angular.min.js',
+        './app/client/assets/js/other/angular-resource.min.js',
+        './app/client/assets/js/other/angular-ui-router.min.js',
+        './app/client/assets/js/other/angular-mocks.js'
+      ]
+    },
   };
 
   grunt.initConfig({
@@ -60,37 +74,14 @@ module.exports = function(grunt) {
     },
     jasmine: {
       coverage: {
-        src: [
-          metaData.client.location + '**/*.resource.js',
-          metaData.client.location + '**/*.service.js',
-          metaData.client.location + '**/*.controller.js',
-          metaData.client.location + '**/*.component.js',
-          metaData.client.location + 'client.app.js'
-        ],
+        src: metaData.client.srcFiles,
         options: {
-          vendor: [
-            metaData.client.location +
-              'assets/js/oauth-js/0.4.0/oauth.min.js',
-            metaData.client.location +
-              'assets/js/other/angular.min.js',
-            metaData.client.location +
-              'assets/js/other/angular-resource.min.js',
-            metaData.client.location +
-              'assets/js/other/angular-ui-router.min.js',
-            metaData.client.location +
-              'assets/js/other/angular-mocks.js'
-          ],
+          vendor: metaData.client.libFiles,
           specs: [metaData.client.location + '**/*.spec.js'],
           template: require('grunt-template-jasmine-istanbul'),
           templateOptions: {
             coverage: 'docs/coverage/coverage.json',
-            report: 'docs/coverage',
-            thresholds: {
-              lines: 75,
-              statements: 75,
-              branches: 75,
-              functions: 90
-            }
+            report: 'docs/coverage'
           }
         }
       }

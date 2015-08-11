@@ -10,12 +10,12 @@
     "postinstall": "node ./operations/setup_server.js",
     "start": "grunt dev",
     "test": "grunt test",
+    "coverage": "grunt coverage",
     "generate-docs": "jsdoc ./README.md --configure ./operations/jsdoc-conf.json",
 
-    "prepare": "npm test && npm run lint && npm run style && grunt coverage",
+    "prepare": "npm test && npm run lint && npm run style && npm run coverage && istanbul check-coverage ./docs/coverage/coverage.json --config ./operations/istanbul-conf.json",
     "lint": "jshint . --exclude-path ./operations/jshint-ignore.txt --config ./operations/jshint-conf.json",
-    "style": "jscs . --config ./operations/jscs-conf.json",
-    "coverage": "grunt coverage"
+    "style": "jscs . --config ./operations/jscs-conf.json"
   },
   "author": "Brok Bucholtz",
   "dependencies": {},

@@ -55,4 +55,9 @@ describe('car controller', function() {
     expect(mockCarService.deleteCar).toHaveBeenCalled();
     expect(Object.keys($scope.cars).length).toBe(0);
   });
+
+  it('should tell if object is empty', function() {
+    expect($scope.util.isEmpty({})).toBeTruthy();
+    expect($scope.util.isEmpty({key: 'Test Value'})).toBeFalsy();
+  });
 });

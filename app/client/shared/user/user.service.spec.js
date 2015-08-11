@@ -99,6 +99,10 @@ describe('user service', function() {
   });
 
   it('should check if user is not logged in', function() {
+    expect(userServ.isLoggedIn()).toBeFalsy();
+  });
+
+  it('should check if user credentials expired', function() {
     var testOauthData = {
       time_stamp: (new Date()).getTime(),
       expires_in: 0,

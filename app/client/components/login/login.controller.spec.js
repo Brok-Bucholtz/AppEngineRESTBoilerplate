@@ -49,4 +49,15 @@ describe('login controller', function() {
     expect($scope.isAuthenticating).toBeFalsy();
     expect(mockState.go).toHaveBeenCalledWith(testState);
   });
+
+  it('should catch login error', inject(function($q) {
+    mockUserServ.login.and.returnValue($q.reject());
+    var testProvider =  'Test Provider';
+    $scope.authenticate(testProvider);
+    $scope.$digest();
+
+    expect(mockUserServ.login).toHaveBeenCalledWith(testProvider);
+    expect($scope.isLoginError).toBeTruthy();
+    expect($scope.isAuthenticating).toBeFalsy();
+  }));
 });

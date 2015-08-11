@@ -13,6 +13,7 @@ describe('navigation controller', function() {
 
     mockUserServ = jasmine.createSpyObj('UserService', ['logout']);
     mockState = jasmine.createSpyObj('$state', ['go']);
+    mockState.current = {};
 
     navCtrl = $controller('NavigationCtrl', {
       $scope: $scope,
@@ -27,5 +28,13 @@ describe('navigation controller', function() {
 
     expect(mockUserServ.logout).toHaveBeenCalled();
     expect(mockState.go).toHaveBeenCalled();
+  });
+
+  it('should determine if the page is the one specified', function() {
+    var testStateName = 'Test Name';
+    mockState.current.name = testStateName;
+
+    expect($scope.isCurrentState(testStateName)).toBeTruthy();
+    expect($scope.isCurrentState(testStateName + 'Negative')).toBeFalsy();
   });
 });
