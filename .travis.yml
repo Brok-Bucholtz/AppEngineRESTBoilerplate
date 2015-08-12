@@ -3,3 +3,5 @@ node:
   - stable
 script:
   - npm run prepare
+after_success:
+  - npm run coveralls

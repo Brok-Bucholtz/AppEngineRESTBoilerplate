@@ -75,6 +75,23 @@ module.exports = function(grunt) {
             report: 'docs/coverage'
           }
         }
+      },
+      coverageLcov: {
+        src: metaData.client.srcFiles,
+        options: {
+          vendor: metaData.client.libFiles,
+          specs: [metaData.client.location + '**/*.spec.js'],
+          template: require('grunt-template-jasmine-istanbul'),
+          templateOptions: {
+            coverage: 'docs/coverage/coverage.json',
+            report: {
+              type: 'lcovonly',
+              options: {
+                dir: 'docs/coverage'
+              }
+            }
+          }
+        }
       }
     },
     concat: {
@@ -94,6 +111,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', ['gae:runDevServer']);
   grunt.registerTask('test', ['karma:unit']);
   grunt.registerTask('coverage', ['jasmine:coverage']);
+  grunt.registerTask('coverageLcov', ['jasmine:coverageLcov']);
   grunt.registerTask('setupclient', ['concat:vendorJS']);
 
   grunt.registerTask('default', ['dev']);
