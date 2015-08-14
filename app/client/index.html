@@ -11,17 +11,12 @@
         <link rel="stylesheet" href="/css/global.css">
         <base href="/">
     </head>
-    <body>
-        <div class="container" ng-app="client.app">
+    <body ng-app="client.app">
+        <div class="container">
             <div ng-controller="NavigationCtrl" ng-include="viewUrl"></div>
             <div ui-view class="active-page"></div>
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-        <script src="/js/oauth-js/0.4.0/oauth.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-resource.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+        <script src="/js/vendor_concat.js"></script>
 
         <script src="/client/shared/oauth/oauth.service.js"></script>
         <script src="/client/shared/user/user.resource.js"></script>

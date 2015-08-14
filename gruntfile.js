@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-protractor-runner');
 
   var metaData = {
     testServer: {
@@ -23,7 +24,7 @@ module.exports = function(grunt) {
         './app/client/client.app.js'
       ],
       libFiles: ['./app/client/assets/js/vendor_concat.js']
-    },
+    }
   };
 
   grunt.initConfig({
@@ -56,7 +57,6 @@ module.exports = function(grunt) {
           'test/client/karma-unit.conf.js',
         singleRun: true
       },
-      // ToDO: Add E2E testing
       e2e: {
         configFile: metaData.operations.location +
           'test/client/karma-e2e.conf.js',
@@ -105,6 +105,13 @@ module.exports = function(grunt) {
         ],
         dest: 'app/client/assets/js/vendor_concat.js',
       }
+    },
+    protractor: {
+      options: {
+        configFile: metaData.operations.location +
+          'test/client/protractor-e2e.conf.js'
+      },
+      e2e: {}
     }
   });
 

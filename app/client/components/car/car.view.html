@@ -1,8 +1,23 @@
 <form ng-submit="createCar()">
     <h4>Add Car</h4>
     <div class="row">
-        <div class="input-field col s6">
-            <input placeholder="Car Description" id="car_description" ng-model="carDescription" type="text" class="validate">
+        <div class="input-field col s3">
+            <input placeholder="Car Description" id="car_description" ng-model="carDescription" ng-disabled="isCreatingCar" type="text" class="validate">
+        </div>
+        <div class="col s1">
+            <div ng-show="isCreatingCar">
+                <div class="preloader-wrapper large active">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>

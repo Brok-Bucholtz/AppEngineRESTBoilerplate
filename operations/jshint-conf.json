@@ -16,7 +16,13 @@
   "globals": {
     // Angular
     "angular": false,
-    "module": true,
-    "inject": true
+    "module": false,
+    "inject": false,
+    //Protractor
+    "protractor": false,
+    "by": false,
+    "element": false,
+    "browser": false,
+    "$": false
   }
 }

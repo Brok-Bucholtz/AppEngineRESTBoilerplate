@@ -7,7 +7,7 @@
     "url": "https://github.com/Brok-Bucholtz/AppEngineRESTBoilerplate.git"
   },
   "scripts": {
-    "postinstall": "bower install && grunt setupclient && node ./operations/setup_server.js",
+    "postinstall": "bower install && grunt setupclient && node ./operations/setup_server.js && node ./node_modules/protractor/bin/webdriver-manager update",
     "start": "grunt dev",
     "test": "grunt test",
 
@@ -32,9 +32,11 @@
     "grunt-contrib-jasmine": "latest",
     "grunt-template-jasmine-istanbul": "latest",
     "grunt-contrib-concat": "latest",
+    "grunt-protractor-runner": "latest",
 
     "jasmine": "latest",
     "jasmine-core": "latest",
+    "protractor": "latest",
 
     "phantomjs": "latest",
     "istanbul": "latest",
