@@ -1,26 +1,16 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 
-# C extensions
-*.so
-
 # Distribution / packaging
+app/client/assets/js
+app/server/lib
 build/
 dist/
 docs/
+node_modules/
 target/
-bower_components/
+tmp/
 
 #IDE
 .idea/
-
-#Node
-node_modules/
-
-#Grunt
-.grunt-gae-pid
-
-#Install
-app/client/assets/js
-app/server/lib

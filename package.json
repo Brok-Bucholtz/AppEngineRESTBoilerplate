@@ -7,54 +7,35 @@
     "url": "https://github.com/Brok-Bucholtz/AppEngineRESTBoilerplate.git"
   },
   "scripts": {
-    "postinstall": "bower install && grunt setupclient && node ./operations/setup_server.js && node ./node_modules/protractor/bin/webdriver-manager update",
-    "start": "grunt dev",
-    "test": "grunt test",
-
-    "coverage": "grunt coverage",
-    "generate-docs": "jsdoc ./README.md --configure ./operations/jsdoc-conf.json",
-
-    "prepare": "npm test && npm run lint && npm run style && npm run coverage && istanbul check-coverage ./docs/coverage/coverage.json --config ./operations/istanbul-conf.json",
-    "lint": "jshint . --exclude-path ./operations/jshint-ignore.txt --config ./operations/jshint-conf.json",
-    "style": "jscs . --config ./operations/jscs-conf.json",
-
-    "coveralls": "grunt coverageLcov && node ./node_modules/coveralls/bin/coveralls.js < docs/coverage/lcov.info"
+    "postinstall": "gulp setup-app --gulpfile ./operations/gulpfile.js",
+    "prepare": "gulp check-code --gulpfile ./operations/gulpfile.js",
+    "coveralls": "gulp deploy-coveralls --gulpfile ./operations/gulpfile.js"
   },
   "author": "Brok Bucholtz",
   "dependencies": {},
   "devDependencies": {
-    "bower": "latest",
+    "gulp": "latest",
+    "gulp-util": "latest",
+    "gulp-karma": "latest",
+    "gulp-jscs": "latest",
+    "gulp-jshint": "latest",
+    "gulp-jsdoc": "latest",
+    "gulp-concat": "latest",
+    "gulp-bower": "latest",
+    "gulp-todo": "latest",
+    "gulp-angular-protractor": "latest",
+    "gulp-coveralls": "latest",
 
-    "grunt": "latest",
-    "grunt-cli": "latest",
-    "grunt-gae": "latest",
-    "grunt-karma": "latest",
-    "grunt-contrib-jasmine": "latest",
-    "grunt-template-jasmine-istanbul": "latest",
-    "grunt-contrib-concat": "latest",
-    "grunt-protractor-runner": "latest",
+    "through2": "latest",
+    "del": "latest",
 
-    "jasmine": "latest",
-    "jasmine-core": "latest",
-    "protractor": "latest",
-
-    "phantomjs": "latest",
     "istanbul": "latest",
+    "jasmine-core": "latest",
+    "phantomjs": "latest",
     "karma": "latest",
     "karma-jasmine": "latest",
-    "karma-chrome-launcher": "latest",
-    "karma-firefox-launcher": "latest",
-    "karma-safari-launcher": "latest",
-    "karma-ie-launcher": "latest",
     "karma-phantomjs-launcher": "latest",
-
-    "ncp": "latest",
-    "mkdirp": "latest",
-
-    "coveralls": "latest",
-    "jshint": "latest",
-    "jsdoc": "latest",
-    "jscs": "latest"
+    "jasmine-istanbul-phantom": "latest"
   },
   "license": "Apache-2.0"
 }

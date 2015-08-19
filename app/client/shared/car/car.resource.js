@@ -1,6 +1,5 @@
 'use strict';
 
-// ToDO: Create E2E Tests
 /* istanbul ignore next */
 angular.module('car.resources', [
   'ngResource'

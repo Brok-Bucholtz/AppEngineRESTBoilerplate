@@ -72,7 +72,6 @@ describe('user service', function() {
     expect(mockUserResource.login).toHaveBeenCalledWith(testUser);
     expect(userData).toEqual(testUserData);
   });
-
   it('should logout user', function() {
     $window.localStorage.setItem(
       userServ.USER_OATH_KEY,
@@ -84,7 +83,6 @@ describe('user service', function() {
 
     expect($window.localStorage.length).toBe(0);
   });
-
   it('should check if user is logged in', function() {
     var testOauthData = {
       time_stamp: (new Date()).getTime(),
@@ -97,11 +95,9 @@ describe('user service', function() {
 
     expect(userServ.isLoggedIn()).toBeTruthy();
   });
-
   it('should check if user is not logged in', function() {
     expect(userServ.isLoggedIn()).toBeFalsy();
   });
-
   it('should check if user credentials expired', function() {
     var testOauthData = {
       time_stamp: (new Date()).getTime(),

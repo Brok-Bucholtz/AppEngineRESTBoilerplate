@@ -14,11 +14,9 @@
   "jasmine": true,
   "node": true,
   "globals": {
-    // Angular
     "angular": false,
     "module": false,
     "inject": false,
-    //Protractor
     "protractor": false,
     "by": false,
     "element": false,
