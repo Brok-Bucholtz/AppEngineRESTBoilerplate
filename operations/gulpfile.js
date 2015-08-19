@@ -9,12 +9,13 @@ var jshint = require('gulp-jshint');
 var jsdoc = require('gulp-jsdoc');
 var concat = require('gulp-concat');
 var bower = require('gulp-bower');
-var jip = require('jasmine-istanbul-phantom');
 var todo = require('gulp-todo');
-var through = require('through2');
-var del = require('del');
 var angularProtractor = require('gulp-angular-protractor');
 var coveralls = require('gulp-coveralls');
+
+var through = require('through2');
+var del = require('del');
+var jip = require('jasmine-istanbul-phantom');
 
 var jshintConfig = require('./jshint-conf.json');
 var appPackage = require('../package.json');

@@ -14,6 +14,18 @@
   "author": "Brok Bucholtz",
   "dependencies": {},
   "devDependencies": {
+    "istanbul": "latest",
+    "protractor": "latest",
+    "jasmine-core": "latest",
+    "phantomjs": "latest",
+    "karma": "latest",
+    "karma-jasmine": "latest",
+    "karma-phantomjs-launcher": "latest",
+
+    "through2": "latest",
+    "del": "latest",
+    "jasmine-istanbul-phantom": "latest",
+
     "gulp": "latest",
     "gulp-util": "latest",
     "gulp-karma": "latest",
@@ -24,18 +36,7 @@
     "gulp-bower": "latest",
     "gulp-todo": "latest",
     "gulp-angular-protractor": "latest",
-    "gulp-coveralls": "latest",
-
-    "through2": "latest",
-    "del": "latest",
-
-    "istanbul": "latest",
-    "jasmine-core": "latest",
-    "phantomjs": "latest",
-    "karma": "latest",
-    "karma-jasmine": "latest",
-    "karma-phantomjs-launcher": "latest",
-    "jasmine-istanbul-phantom": "latest"
+    "gulp-coveralls": "latest"
   },
   "license": "Apache-2.0"
 }
