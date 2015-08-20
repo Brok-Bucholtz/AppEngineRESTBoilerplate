@@ -12,9 +12,10 @@ var bower = require('gulp-bower');
 var todo = require('gulp-todo');
 var angularProtractor = require('gulp-angular-protractor');
 var coveralls = require('gulp-coveralls');
+var filter = require('gulp-filter');
+var order = require('gulp-order');
 
 var through = require('through2');
-var del = require('del');
 var jip = require('jasmine-istanbul-phantom');
 
 var jshintConfig = require('./jshint-conf.json');
@@ -32,17 +33,11 @@ var e2eTestFiles = ['test/client/e2e/*.e2e.js'];
 var operationFiles = ['**/*.js'];
 var readMeFiles = ['../**/README.md'];
 var bowerLibFiles = [
-  '../tmp/bower_components/oauth-js/dist/oauth.min.js',
-  '../tmp/bower_components/angular/angular.min.js',
-  '../tmp/bower_components/angular-resource/angular-resource.min.js',
-  '../tmp/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-  '../tmp/bower_components/angular-mocks/angular-mocks.js'];
-var setupFiles = [
-  '../docs',
-  '../node_modules',
-  '../tmp',
-  '../app/server/lib',
-  '../app/client/assets/js'];
+  'oauth-js/dist/oauth.min.js',
+  'angular/angular.min.js',
+  'angular-resource/angular-resource.min.js',
+  'angular-ui-router/release/angular-ui-router.min.js',
+  'angular-mocks/angular-mocks.js'];
 
 var codeBaseJsFiles = clientFiles.concat(
     unitTestFiles,
@@ -58,11 +53,10 @@ var standardExecCallBack = function(error, stdout, stderr) {
 gulp.task('setup-client', function() {
   var libDirectory = libFile.match(/^.*[\\\/]/)[0];
   var libFilename = libFile.replace(/^.*[\\\/]/, '');
-  gutil.log(libDirectory);
-  gutil.log(libFilename);
 
-  bower('../tmp/bower_components');
-  gulp.src(bowerLibFiles)
+  bower('../tmp/bower_components')
+    .pipe(filter(bowerLibFiles))
+    .pipe(order(bowerLibFiles))
     .pipe(concat(libFilename))
     .pipe(gulp.dest(libDirectory));
 });
@@ -72,10 +66,6 @@ gulp.task('setup-server', function() {
     .pipe(gulp.dest('../app/server/lib/endpoints_proto_datastore'));
 });
 
-gulp.task('check-setup', function(callBack) {
-  del(setupFiles, {force: true} , callBack);
-  exec('cd .. && npm install', standardExecCallBack);
-});
 gulp.task('check-lint', function() {
   jshintConfig.lookup = false;
 
@@ -184,6 +174,11 @@ gulp.task('check-test', [
 gulp.task('setup-app', ['setup-client', 'setup-server']);
 gulp.task('check-code', [
   'check-test',
+  'check-formatting',
+  'check-comments']);
+gulp.task('check-code-noe2e', [
+  'check-unittest',
+  'check-unitcoverage',
   'check-formatting',
   'check-comments']);
 

@@ -1,42 +1,46 @@
 {
   "name": "AppEngineRESTBoilerplate",
   "version": "1.0.0",
-  "private" : true,
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/Brok-Bucholtz/AppEngineRESTBoilerplate.git"
   },
+  "author": "Brok Bucholtz",
   "scripts": {
     "postinstall": "gulp setup-app --gulpfile ./operations/gulpfile.js",
-    "prepare": "gulp check-code --gulpfile ./operations/gulpfile.js",
+    "prepare": "gulp check-code-noe2e --gulpfile ./operations/gulpfile.js",
     "coveralls": "gulp deploy-coveralls --gulpfile ./operations/gulpfile.js"
   },
-  "author": "Brok Bucholtz",
+  "engines": {
+    "node": "0.12.x"
+  },
   "dependencies": {},
   "devDependencies": {
-    "istanbul": "latest",
-    "protractor": "latest",
-    "jasmine-core": "latest",
-    "phantomjs": "latest",
-    "karma": "latest",
-    "karma-jasmine": "latest",
-    "karma-phantomjs-launcher": "latest",
+    "istanbul": "^0.3.18",
+    "protractor": "^2.1.0",
+    "jasmine-core": "^2.3.4",
+    "phantomjs": "^1.9.18",
+    "karma": "^0.13.9",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
 
-    "through2": "latest",
-    "del": "latest",
-    "jasmine-istanbul-phantom": "latest",
+    "through2": "^2.0.0",
+    "jasmine-istanbul-phantom": "^1.1.1",
 
-    "gulp": "latest",
-    "gulp-util": "latest",
-    "gulp-karma": "latest",
-    "gulp-jscs": "latest",
-    "gulp-jshint": "latest",
-    "gulp-jsdoc": "latest",
-    "gulp-concat": "latest",
-    "gulp-bower": "latest",
-    "gulp-todo": "latest",
-    "gulp-angular-protractor": "latest",
-    "gulp-coveralls": "latest"
+    "gulp": "^3.9.0",
+    "gulp-angular-protractor": "^0.0.2",
+    "gulp-bower": "^0.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-jscs": "^2.0.0",
+    "gulp-jsdoc": "^0.1.4",
+    "gulp-jshint": "^1.11.2",
+    "gulp-karma": "^0.0.4",
+    "gulp-todo": "^3.3.0",
+    "gulp-util": "^3.0.6",
+    "gulp-filter": "^3.0.0",
+    "gulp-order": "^1.1.1"
   },
   "license": "Apache-2.0"
 }
