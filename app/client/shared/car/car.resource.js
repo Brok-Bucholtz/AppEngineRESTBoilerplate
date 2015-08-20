@@ -1,6 +1,5 @@
 'use strict';
 
-/* istanbul ignore next */
 angular.module('car.resources', [
   'ngResource'
 ])
